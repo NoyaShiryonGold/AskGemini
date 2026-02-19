@@ -1,0 +1,138 @@
+﻿<Window x:Class="AskGemini_wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Ask Gemini"
+        Height="650"
+        Width="800"
+        Background="#1E1E1E"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <!-- TextBox Style -->
+        <Style TargetType="TextBox">
+            <Setter Property="Background"
+                    Value="#2D2D30" />
+            <Setter Property="Foreground"
+                    Value="White" />
+            <Setter Property="FontSize"
+                    Value="14" />
+            <Setter Property="Margin"
+                    Value="5" />
+            <Setter Property="Padding"
+                    Value="8" />
+        </Style>
+        <!-- Button Style -->
+        <Style TargetType="Button">
+            <Setter Property="Background"
+                    Value="#4CAF50" />
+            <Setter Property="Foreground"
+                    Value="White" />
+            <Setter Property="FontSize"
+                    Value="14" />
+            <Setter Property="Padding"
+                    Value="10" />
+            <Setter Property="Margin"
+                    Value="5" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="Cursor"
+                    Value="Hand" />
+        </Style>
+        <!-- Suggestion Chip Style -->
+        <Style x:Key="IdeaStyle"
+               TargetType="Border">
+            <Setter Property="Background"
+                    Value="#2D2D30" />
+            <Setter Property="CornerRadius"
+                    Value="15" />
+            <Setter Property="Padding"
+                    Value="10" />
+            <Setter Property="Margin"
+                    Value="5" />
+            <Setter Property="Cursor"
+                    Value="Hand" />
+            <Setter Property="BorderBrush"
+                    Value="#3E3E42" />
+            <Setter Property="BorderThickness"
+                    Value="1" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver"
+                         Value="True">
+                    <Setter Property="Background"
+                            Value="#3E3E42" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <!-- Title -->
+        <TextBlock Text="Ask Gemini"
+                   FontSize="22"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   Margin="5" />
+        <!-- Role Section -->
+        <StackPanel Grid.Row="1"
+                    Margin="5">
+            <TextBlock Text="Enter Role:"
+                       Foreground="White"
+                       Margin="5" />
+            <TextBox Name="RoleTextBox"
+                     Height="35"
+                     TextWrapping="Wrap" />
+            <TextBlock Text="Suggested Roles:"
+                       Foreground="#AAAAAA"
+                       Margin="5,10,5,5" />
+            <WrapPanel>
+                <Border Style="{StaticResource IdeaStyle}"
+                        MouseDown="RoleIdea_Click">
+                    <TextBlock Text="Act as a software development expert"
+                               Foreground="White" />
+                </Border>
+                <Border Style="{StaticResource IdeaStyle}"
+                        MouseDown="RoleIdea_Click">
+                    <TextBlock Text="Act as a professional teacher"
+                               Foreground="White" />
+                </Border>
+                <Border Style="{StaticResource IdeaStyle}"
+                        MouseDown="RoleIdea_Click">
+                    <TextBlock Text="Act as a certified fitness coach"
+                               Foreground="White" />
+                </Border>
+            </WrapPanel>
+        </StackPanel>
+        <!-- Prompt Section -->
+        <StackPanel Grid.Row="2"
+                    Margin="5">
+            <TextBlock Text="Enter Prompt:"
+                       Foreground="White"
+                       Margin="5" />
+            <TextBox Name="PromptTextBox"
+                     Height="120"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap" />
+        </StackPanel>
+        <!-- Send Button -->
+        <Button Grid.Row="3"
+                Content="Send Request"
+                Height="40"
+                Click="SendButton_Click" />
+        <!-- Response -->
+        <ScrollViewer Grid.Row="0" Grid.Column="1" Grid.RowSpan="4"
+                      VerticalScrollBarVisibility="Auto"
+                      Margin="5">
+            <TextBlock Name="ResponseTextBlock"
+                       Foreground="White"
+                       TextWrapping="Wrap" />
+        </ScrollViewer>
+    </Grid>
+</Window>
