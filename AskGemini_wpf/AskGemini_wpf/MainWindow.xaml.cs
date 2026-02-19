@@ -22,7 +22,7 @@ namespace AskGemini_wpf
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly string _apiKey = "AIzaSyD7iuKtH1Da29D8HUu9gKW4FugYXeJ3gpE";
+        private readonly string _apiKey = "...";
         private static readonly HttpClient _httpClient = new HttpClient();
         private readonly string _model = "gemini-2.5-flash-lite";
 
